@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Master</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="service-worker.js"></script>
+</head>
+
+<body>
+    <div class="phone-container">
+        <header>
+            <h1>Pet Master</h1>
+        </header>
+
+        <section class="profile">
+            <img src="resources/cat.png" alt="Cat Icon" class="profile-img" />
+            <div class="side-buttons">
+                <button class="circle2-btn">🥜</button>
+                <p class="profile-name">Pet Master</p>
+                <button class="circle-btn">▼</button>
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="actions">
+            <div class="action">
+                <img src="resources/stubborn.png" alt="Cat Mood" />
+                <p>Stubborn</p>
+            </div>
+            <div class="action">
+                <img src="resources/bowl.png" alt="Bowl" />
+                <p>Feeding</p>
+            </div>
+            <div class="action">
+                <img src="resources/thunderbolt.png" alt="Energy" />
+                <p>Energetic</p>
+            </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section class="buttons">
+            <button class="circle-btn">🐾</button>
+            <button class="circle-btn">2</button>
+            <button class="circle-btn">1</button>
+            <button class="circle-btn">8</button>
+            <button class="circle-btn">8</button>
+        </section>
+
+        <section class="schedule">
+            <h2>Feeding Schedule</h2>
+            <p>Feeding Time:</p>
+            <div class="slider-container">
+                <div class="slider-value">3 / 4</div>
+                <input type="range" min="0" max="4" value="3" class="slider" disabled />
+            </div>
+            <div class="feeding-info">
+                <p id="current-time">Current Time: 5:30 PM | Next: 7:30 PM</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Powered by Pet Master</p>
+            <a href="#">Learn More</a>
+        </footer>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('Service Worker Registered', reg))
+                .catch(err => console.error('Service Worker Registration Failed', err));
+        }
+    </script>
+
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f0fafa, #c2f0f0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .phone-container {
+        background: #ffffff;
+        width: 360px;
+        height: 667px;
+        border-radius: 24px;
+        padding: 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        animation: slideIn 0.6s ease-out;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 26px;
+        font-weight: 600;
+        color: #004d4d;
+        margin-bottom: 10px;
+    }
+
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .profile-img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-color: #ebffff;
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-name {
+        font-size: 20px;
+        font-weight: 600;
+        color: #005959;
+        margin-top: 8px;
+    }
+
+    .side-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 12px;
+        align-items: center;
+    }
+
+    .circle-btn,
+    .circle2-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circle-btn {
+        background: #b2eaea;
+        color: #004d4d;
+    }
+
+    .circle-btn:hover {
+        background: #99d9d9;
+        transform: scale(1.1);
+    }
+
+    .circle2-btn {
+        background: #eeeeee;
+        color: #333333;
+    }
+
+    .circle2-btn:hover {
+        background: #dddddd;
+        transform: scale(1.1);
+    }
+
+    .divider {
+        border: none;
+        height: 1px;
+        background-color: #ccc;
+        margin: 16px 0;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .action img {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        border-radius: 50%;
+        background: #f3fcfc;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        margin-bottom: 6px;
+    }
+
+    .action p {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 8px 0;
+    }
+
+    .schedule {
+        text-align: center;
+        padding-top: 8px;
+    }
+
+    .schedule h2 {
+        font-size: 16px;
+        color: #007777;
+        margin-bottom: 8px;
+    }
+
+    .slider-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .slider {
+        width: 80%;
+        accent-color: #007777;
+        cursor: not-allowed;
+    }
+
+    .slider-value {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .feeding-info p {
+        font-size: 13px;
+        color: #555;
+        margin-top: 6px;
+    }
+
+    .footer {
+        margin-top: auto;
+        text-align: center;
+        font-size: 13px;
+        color: #007575;
+        padding: 8px 0;
+        border-top: 1px solid #dceff0;
+    }
+
+    .footer a {
+        color: #008c8c;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .footer a:hover {
+        color: #005959;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(40px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+</html>
