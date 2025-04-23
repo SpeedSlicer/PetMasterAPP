@@ -7,7 +7,9 @@ const FILES_TO_CACHE = [
     '/resources/cat.png',
     '/resources/stubborn.png',
     '/resources/bowl.png',
+    '/resources/logo.png',
     '/resources/thunderbolt.png',
+    '/resources/dropdown.png',
     'https://kit.fontawesome.com/a076d05399.js',
 ];
 
