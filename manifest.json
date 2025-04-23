@@ -1,14 +1,15 @@
 {
-    "name": "PetMaster",
+    "name": "Pet Master",
     "short_name": "PetMaster",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "theme_color": "#ffcc00",
     "icons": [
-        {
-            "src": "resources/logo.png",
-            "type": "image/png"
-        }
+      {
+        "src": "resources/logo.png",
+        "type": "image/png"
+      }
     ]
-}
+  }
+  
